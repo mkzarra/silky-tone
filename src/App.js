@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from 'react';
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
+
+import Auth from './components/Auth/Auth';
+import Songs from './components/Songs/Songs';
+import Header from './Header';
+import { AuthContext } from './context/auth-context';
 
 function App() {
+  const { authStatus, setAuthStatus } = useContext(AuthContext);
+
+  const routes = authStatus ? (
+    <Switch>
+      <Route path="/songs" component={Songs} />
+      <Redirect to="/callback" />
+    </Switch>
+  ) : (
+    <Switch>
+      <Route path="/" component={Auth} />
+      <Redirect to="/" />
+    </Switch>
+  );
+
+  function backToLandingHandler() {
+    return setAuthStatus(false)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header backToLanding={backToLandingHandler} />
+      {routes}
     </div>
   );
 }
 
-export default App;
+export default withRouter(App);

@@ -1,0 +1,40 @@
+.Header {
+  box-shadow: 0 0.25px 4px rgba(0, 0, 0, 0.26);
+  height: 5rem;
+  padding: 0.3rem 0.7rem 0.5rem;
+}
+
+.Header span {
+  height: inherit;
+  box-sizing: content-box;
+  transition: 0.15s;
+  display: flex;
+  flex-direction: row;
+}
+
+.Header span>div {
+  display: inline-block;
+  width: 14.5rem;
+  height: 4.8rem;
+  box-sizing: border-box;
+}
+
+.Header span>div:after,
+.Header span>div:before {
+  display: block;
+  content: '';
+  transform: scaleX(0);
+  -webkit-transform: scaleX(0);
+  transition: transform 0.15s ease-in-out;
+  -webkit-transition: transform 0.15s ease-in-out;
+  border-bottom: 2.6px solid #ba00c49f;
+}
+
+.Header img:hover {
+  cursor: pointer;
+}
+
+.Header span>div:hover:after {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}

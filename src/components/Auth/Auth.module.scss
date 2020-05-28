@@ -1,0 +1,28 @@
+.Auth {
+  color: #3a3a3a;
+  width: 40rem;
+  margin: 2rem auto;
+  max-width: 80%;
+  text-align: center;
+}
+
+.Auth button {
+  text-align: center;
+  height: 2rem;
+  width: 87px;
+  color: white;
+  font: inherit;
+  font-weight: bold;
+  background: #ba00c4;
+  border: none;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.Auth button:focus {
+  outline: none;
+}
+
+.Auth button:hover {
+  background: #f531ff;
+}
